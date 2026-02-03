@@ -15,10 +15,8 @@ volumes:
     name: portainer_data
 
 networks:
-  homelab:
-    external: true
-  portainer_network:
-    external: true
+  default:
+    name: portainer_network
 
 # networks:
 #   portainer_network:
