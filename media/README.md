@@ -1,6 +1,6 @@
 # Media
 
-Provides a fully automated media server solution for downloading and managing public-domain movies and TV shows alongside Linux ISOs.
+Provides a fully automated media server solution for downloading and managing public-domain movies, TV shows, and Linux ISOs.
 
 ## Services
 
