@@ -12,6 +12,6 @@ services:
     devices:
       - /dev/dri:/dev/dri # Hardware transcoding device
     volumes:
-      - /docker/appdata/plex:/config
+      - ${DOCKER_APPDATA}/plex:/config
       - ${ROOT}/data/media:/data/media
     network_mode: host
