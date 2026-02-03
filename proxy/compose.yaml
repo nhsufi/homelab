@@ -6,8 +6,8 @@ services:
     environment:
       - TZ=${TZ}
     volumes:
-      - /docker/appdata/nginx/data:/data
-      - /docker/appdata/nginx/letsencrypt:/etc/letsencrypt
+      - ${DOCKER_APPDATA}/nginx/data:/data
+      - ${DOCKER_APPDATA}/nginx/letsencrypt:/etc/letsencrypt
     networks:
       - homelab
       - portainer_network
