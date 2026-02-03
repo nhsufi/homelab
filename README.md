@@ -1,4 +1,4 @@
-# homelab
+# homelab (see [r/homelab](https://www.reddit.com/r/homelab/))
 
 This repository contains the Docker Compose configurations and setup for my personal home server.
 
