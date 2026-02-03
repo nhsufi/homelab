@@ -6,8 +6,8 @@ services:
     environment:
       - TZ=${TZ}
     volumes:
-      - /docker/appdata/adguardhome/conf:/opt/adguardhome/conf
-      - /docker/appdata/adguardhome/work:/opt/adguardhome/work
+      - ${DOCKER_APPDATA}/adguardhome/conf:/opt/adguardhome/conf
+      - ${DOCKER_APPDATA}/adguardhome/work:/opt/adguardhome/work
     networks:
       - homelab
     ports:
