@@ -16,7 +16,7 @@ Portainer is used for managing and monitoring all Docker containers and services
 ## Server Hardware
 
 - **CPU**: Intel N150
-- **GPU**: UHD Graphics 730 integrated graphics
+- **GPU**: Intel UHD Graphics 730
 - **RAM**: 12GB
 - **Storage**: 512GB internal SSD + 2 x 12TB HDD in RAID 1
 - **OS**: Linux Mint
