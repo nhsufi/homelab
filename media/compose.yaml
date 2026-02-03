@@ -1,0 +1,217 @@
+services:
+  # Gluetun - Routes selected services' traffic through VPN
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    container_name: gluetun
+    restart: always
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - FIREWALL_VPN_INPUT_PORTS=${TORRENTING_PORT}
+      - SERVER_COUNTRIES=Netherlands
+      - TZ=${TZ}
+      - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}
+      - VPN_TYPE=wireguard
+      - WIREGUARD_ADDRESSES=${WIREGUARD_ADDRESSES}
+      - WIREGUARD_PRESHARED_KEY=${WIREGUARD_PRESHARED_KEY}
+      - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
+    volumes:
+      - ${DOCKER_APPDATA}/gluetun:/config
+    networks:
+      - homelab
+    ports:
+      - ${WEBUI_PORT}:${WEBUI_PORT}
+
+  # qBittorrent - Torrent client routed through Gluetun
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    restart: unless-stopped
+    environment:
+      - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest # VueTorrent UI replacement
+      - PGID=${PGID}
+      - PUID=${PUID}
+      - TZ=${TZ}
+      - TORRENTING_PORT=${TORRENTING_PORT} # From qBittorrent settings
+      - WEBUI_PORT=${WEBUI_PORT} # From qBittorrent settings
+    volumes:
+      - ${DOCKER_APPDATA}/qbittorrent:/config
+      - ${ROOT}/data/torrents:/data/torrents
+    network_mode: service:gluetun
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+
+  # SABnzbd - Usenet downloader
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    restart: unless-stopped
+    environment:
+      - PGID=${PGID}
+      - PUID=${PUID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_APPDATA}/sabnzbd:/config
+      - ${ROOT}/data/usenet:/data/usenet
+    networks:
+      - homelab
+    ports:
+      - 6789:6789
+
+  # FlareSolverr - Solves Cloudflare challenges
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    restart: unless-stopped
+    environment:
+      - LOG_LEVEL=info
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_APPDATA}/flaresolverr:/config
+    networks:
+      - homelab
+    ports:
+      - 8191:8191
+
+  # Prowlarr - Indexer manager for *arr apps
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    restart: unless-stopped
+    environment:
+      - PGID=${PGID}
+      - PUID=${PUID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_APPDATA}/prowlarr:/config
+    networks:
+      - homelab
+    ports:
+      - 9696:9696
+
+  # Huntarr - Finds and upgrades media quality
+  huntarr:
+    image: huntarr/huntarr:latest
+    container_name: huntarr
+    restart: unless-stopped
+    environment:
+      - PGID=${PGID}
+      - PUID=${PUID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_APPDATA}/huntarr:/config
+    networks:
+      - homelab
+    ports:
+      - 9705:9705
+
+  # Profilarr - Syncs quality profiles across *arr apps
+  profilarr:
+    image: santiagosayshey/profilarr:latest
+    container_name: profilarr
+    restart: unless-stopped
+    environment:
+      - PGID=${PGID}
+      - PUID=${PUID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_APPDATA}/profilarr:/config
+    networks:
+      - homelab
+    ports:
+      - 6868:6868
+
+  # Radarr - Movie automation
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    restart: unless-stopped
+    environment:
+      - PGID=${PGID}
+      - PUID=${PUID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_APPDATA}/radarr:/config
+      - ${ROOT}/data:/data
+    networks:
+      - homelab
+    ports:
+      - 7878:7878
+
+  # Sonarr - TV series automation
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    restart: unless-stopped
+    environment:
+      - PGID=${PGID}
+      - PUID=${PUID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_APPDATA}/sonarr:/config
+      - ${ROOT}/data:/data
+    networks:
+      - homelab
+    ports:
+      - 8989:8989
+
+  # Bazarr - Subtitle automation
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    restart: unless-stopped
+    environment:
+      - PGID=${PGID}
+      - PUID=${PUID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_APPDATA}/bazarr:/config
+      - ${ROOT}/data:/data
+    networks:
+      - homelab
+    ports:
+      - 6767:6767
+
+  # Homarr - Web dashboard for services
+  homarr:
+    image: ghcr.io/homarr-labs/homarr:latest
+    container_name: homarr
+    restart: unless-stopped
+    environment:
+      - SECRET_ENCRYPTION_KEY=${ENCRYPTION_KEY}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_APPDATA}/homarr:/appdata
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - homelab
+      - portainer_network
+    ports:
+      - 7575:7575
+
+  # Seerr - Media request manager
+  seerr:
+    image: ghcr.io/seerr-team/seerr:develop
+    container_name: seerr
+    restart: unless-stopped
+    environment:
+      - LOG_LEVEL=debug
+      - PGID=${PGID}
+      - PUID=${PUID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOCKER_APPDATA}/seerr:/app/config
+    networks:
+      - homelab
+    ports:
+      - 5055:5055
+
+networks:
+  homelab:
+    external: true
+  portainer_network:
+    external: true
