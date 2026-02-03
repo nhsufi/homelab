@@ -10,9 +10,9 @@ services:
       - 9443:9443
       - 9000:9000
 
-# volumes:
-#   portainer_data:
-#     name: portainer_data
+volumes:
+  portainer_data:
+    name: portainer_data
 
 networks:
   homelab:
