@@ -10,17 +10,23 @@ services:
       - 9443:9443
       - 9000:9000
 
-volumes:
-  portainer_data:
-    name: portainer_data
+# volumes:
+#   portainer_data:
+#     name: portainer_data
 
 networks:
-  portainer_network:
-    name: portainer_network
-    driver: bridge
   homelab:
-    name: homelab
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.19.0.0/24
+    external: true
+  portainer_network:
+    external: true
+
+# networks:
+#   portainer_network:
+#     name: portainer_network
+#     driver: bridge
+#   homelab:
+#     name: homelab
+#     driver: bridge
+#     ipam:
+#       config:
+#         - subnet: 172.19.0.0/24
