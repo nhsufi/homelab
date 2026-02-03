@@ -1,6 +1,6 @@
 # Media
 
-This repository provides a fully automated media server solution for downloading and managing public-domain movies and TV shows alongside Linux ISOs.
+Provides a fully automated media server solution for downloading and managing public-domain movies and TV shows alongside Linux ISOs.
 
 ## Services
 

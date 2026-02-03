@@ -1,6 +1,6 @@
 # homelab (see [r/homelab](https://www.reddit.com/r/homelab/))
 
-This repository contains the Docker Compose configurations and setup for my personal home server.
+This repository contains the Docker configurations and setup for my personal home server.
 
 ## Directory Structure
 
