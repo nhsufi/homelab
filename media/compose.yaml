@@ -1,5 +1,4 @@
 services:
-  # Gluetun - Routes selected services' traffic through VPN
   gluetun:
     image: qmcgaw/gluetun:latest
     container_name: gluetun
@@ -24,18 +23,17 @@ services:
     ports:
       - ${WEBUI_PORT}:${WEBUI_PORT}
 
-  # qBittorrent - Torrent client routed through Gluetun
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
     restart: unless-stopped
     environment:
-      - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest # VueTorrent UI replacement
+      - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
       - PGID=${PGID}
       - PUID=${PUID}
       - TZ=${TZ}
-      - TORRENTING_PORT=${TORRENTING_PORT} # From qBittorrent settings
-      - WEBUI_PORT=${WEBUI_PORT} # From qBittorrent settings
+      - TORRENTING_PORT=${TORRENTING_PORT}
+      - WEBUI_PORT=${WEBUI_PORT}
     volumes:
       - ${DOCKER_APPDATA}/qbittorrent:/config
       - ${ROOT}/data/torrents:/data/torrents
@@ -45,7 +43,6 @@ services:
         condition: service_healthy
         restart: true
 
-  # SABnzbd - Usenet downloader
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
     container_name: sabnzbd
@@ -62,7 +59,6 @@ services:
     ports:
       - 6789:6789
 
-  # FlareSolverr - Solves Cloudflare challenges
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:latest
     container_name: flaresolverr
@@ -77,7 +73,6 @@ services:
     ports:
       - 8191:8191
 
-  # Prowlarr - Indexer manager for *arr apps
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
@@ -93,7 +88,6 @@ services:
     ports:
       - 9696:9696
 
-  # Huntarr - Finds and upgrades media quality
   huntarr:
     image: huntarr/huntarr:latest
     container_name: huntarr
@@ -109,7 +103,6 @@ services:
     ports:
       - 9705:9705
 
-  # Profilarr - Syncs quality profiles across *arr apps
   profilarr:
     image: santiagosayshey/profilarr:latest
     container_name: profilarr
@@ -125,7 +118,6 @@ services:
     ports:
       - 6868:6868
 
-  # Radarr - Movie automation
   radarr:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
@@ -142,7 +134,6 @@ services:
     ports:
       - 7878:7878
 
-  # Sonarr - TV series automation
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
@@ -159,7 +150,6 @@ services:
     ports:
       - 8989:8989
 
-  # Bazarr - Subtitle automation
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
@@ -176,7 +166,6 @@ services:
     ports:
       - 6767:6767
 
-  # Homarr - Web dashboard for services
   homarr:
     image: ghcr.io/homarr-labs/homarr:latest
     container_name: homarr
@@ -193,7 +182,6 @@ services:
     ports:
       - 7575:7575
 
-  # Seerr - Media request manager
   seerr:
     image: ghcr.io/seerr-team/seerr:develop
     container_name: seerr
