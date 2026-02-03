@@ -1,29 +1,31 @@
 # Media
 
+This repository provides a fully automated media server solution for downloading and managing public-domain movies and TV shows alongside Linux ISOs.
+
 ## Services
 
-**Gluetun** - VPN router that directs selected services' traffic through a VPN.
+[**Gluetun**](https://github.com/qdm12/gluetun) - VPN router that directs selected services' traffic through a VPN.
 
-**qBittorrent** - Torrent client routed through Gluetun with VueTorrent UI.
+[**qBittorrent**](https://github.com/linuxserver/docker-qbittorrent) - Torrent client routed through Gluetun with VueTorrent UI.
 
-**SABnzbd** - Usenet downloader for downloading content from Usenet servers.
+[**SABnzbd**](https://github.com/linuxserver/docker-sabnzbd) - Usenet downloader for downloading content from Usenet servers.
 
-**FlareSolverr** - Solves Cloudflare challenges for indexers and other services.
+[**FlareSolverr**](https://github.com/FlareSolverr/FlareSolverr) - Solves Cloudflare challenges for indexers and other services.
 
-**Prowlarr** - Manages indexers (torrent and Usenet sources) for the *arr suite.
+[**Prowlarr**](https://github.com/linuxserver/docker-prowlarr) - Manages indexers (torrent and Usenet sources) for the *arr suite.
 
-**Huntarr** - Finds and upgrades media quality, suggesting better releases.
+[**Huntarr**](https://github.com/plexguide/Huntarr.io) - Finds and upgrades media quality, suggesting better releases.
 
-**Profilarr** - Syncs quality profiles across Radarr, Sonarr, and other *arr apps.
+[**Profilarr**](https://github.com/Dictionarry-Hub/profilarr) - Syncs quality profiles across Radarr, Sonarr, and other *arr apps.
 
-**Radarr** - Automated movie management and downloading.
+[**Radarr**](https://github.com/linuxserver/docker-radarr) - Automated movie management and downloading.
 
-**Sonarr** - Automated TV series management and downloading.
+[**Sonarr**](https://github.com/linuxserver/docker-sonarr) - Automated TV series management and downloading.
 
-**Bazarr** - Automated subtitle downloading for movies and TV shows.
+[**Bazarr**](https://github.com/linuxserver/docker-bazarr) - Automated subtitle downloading for movies and TV shows.
 
-**Homarr** - Web dashboard for quick access to all services.
+[**Homarr**](https://github.com/homarr-labs/homarr) - Web dashboard for quick access to all services.
 
-**Seerr** - Media request manager that integrates with Radarr and Sonarr for user requests.
+[**Seerr**](https://github.com/seerr-team/seerr) - Media request manager that integrates with Radarr and Sonarr for user requests.
 
-**Plex** - Media server that streams movies and TV shows to any device. Supports hardware transcoding. (See `plex/compose.yaml`)
+[**Plex**](https://github.com/linuxserver/docker-plex) - Media server that streams movies and TV shows to any device. Supports hardware transcoding. (See `plex/compose.yaml`)
