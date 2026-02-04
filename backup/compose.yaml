@@ -10,7 +10,7 @@ services:
       - SETTINGS_ENCRYPTION_KEY=${DUPLICATI_ENCRYPTION_KEY}
     volumes:
       - /mnt/usb:/backups # Local backup destination
-      - portainer_data:source/portainer_data
+      - portainer_data:/source/portainer_data
       - ${DOCKER_APPDATA}:/source/appdata
       - ${DOCKER_APPDATA}/duplicati:/config
     networks:
