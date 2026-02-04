@@ -166,24 +166,6 @@ services:
     ports:
       - 6767:6767
 
-  cleanuparr:
-    image: ghcr.io/cleanuparr/cleanuparr:latest
-    container_name: cleanuparr
-    restart: unless-stopped
-    environment:
-      - UMASK=022
-      - PORT=11011
-      - PGID=${PGID}
-      - PUID=${PUID}
-      - TZ=${TZ}
-    volumes:
-      - ${DOCKER_APPDATA}/cleanuparr:/config
-      - ${ROOT}/data/torrents:/data/torrents
-    networks:
-      - homelab
-    ports:
-      - 11011:11011
-
   homarr:
     image: ghcr.io/homarr-labs/homarr:latest
     container_name: homarr
