@@ -9,18 +9,13 @@ services:
       - TZ=${TZ}
       - SETTINGS_ENCRYPTION_KEY=${DUPLICATI_ENCRYPTION_KEY}
     volumes:
-      - portainer_data:/source/portainer_data
-      - /mnt/usb:/backups # Local backup destination
-      - ${DOCKER_APPDATA}:/source # Docker appdata
+      - /mnt/usb:/backups
+      - ${DOCKER_APPDATA}:/source
       - ${DOCKER_APPDATA}/duplicati:/config
     networks:
       - homelab
     ports:
       - 8200:8200
-
-volumes:
-  portainer_data:
-    external: true
 
 networks:
   homelab:
