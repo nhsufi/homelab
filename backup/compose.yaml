@@ -12,10 +12,15 @@ services:
       - ${DOCKER_APPDATA}/duplicati:/config
       - /mnt/usb:/usb
       - ${DOCKER_APPDATA}:/to_backup/appdata
-    network_mode: bridge
+    networks:
+      - homelab
     ports:
       - 8200:8200
 
 volumes:
   portainer_data:
+    external: true
+
+networks:
+  homelab:
     external: true
