@@ -1,0 +1,21 @@
+services:
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    container_name: duplicati
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - SETTINGS_ENCRYPTION_KEY=${DUPLICATI_ENCRYPTION_KEY}
+    volumes:
+      - ${DOCKER_APPDATA}/duplicati:/config
+      - /mnt/usb:/usb
+      - ${DOCKER_APPDATA}:/to_backup/appdata
+    network_mode: bridge
+    ports:
+      - 8200:8200
+
+volumes:
+  portainer_data:
+    external: true

@@ -4,10 +4,10 @@ services:
     container_name: plex
     restart: unless-stopped
     environment:
+      - VERSION=docker
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-      - VERSION=docker
       - PLEX_CLAIM=${PLEX_CLAIM}
     devices:
       - /dev/dri:/dev/dri # Hardware transcoding device
