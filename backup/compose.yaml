@@ -10,8 +10,9 @@ services:
       - SETTINGS_ENCRYPTION_KEY=${DUPLICATI_ENCRYPTION_KEY}
     volumes:
       - /mnt/usb:/usb
+      - portainer_data:/portainer_data
+      - ${DOCKER_APPDATA}:${DOCKER_APPDATA}
       - ${DOCKER_APPDATA}/duplicati:/config
-      - ${DOCKER_APPDATA}:/to_backup/appdata
     networks:
       - homelab
     ports:
