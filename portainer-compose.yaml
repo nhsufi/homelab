@@ -12,7 +12,7 @@ services:
 
   cup:
     container_name: cup
-    image: ghcr.io/portainer/cup:latest
+    image: ghcr.io/sergi0g/cup:latest
     restart: always
     command: serve
     volumes:
