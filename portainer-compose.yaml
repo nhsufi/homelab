@@ -10,6 +10,16 @@ services:
       - 9443:9443
       - 9000:9000
 
+  cup:
+    container_name: cup
+    image: ghcr.io/portainer/cup:latest
+    restart: always
+    command: serve
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8000:8000
+
 volumes:
   portainer_data:
     name: portainer_data
