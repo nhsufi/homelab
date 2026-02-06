@@ -14,6 +14,10 @@ This repository contains the Docker configurations and setup for my personal hom
 
 Portainer is used for managing and monitoring all Docker containers and services across the server. It provides a web-based interface for container management, image management, and stack orchestration. See `portainer-compose.yaml` for the Portainer setup.
 
+## [Cup](https://github.com/sergi0g/cup)
+
+A lightweight service that periodically scans my Docker images for new versions so that my containers stay up to date. See `portainer-compose.yaml` for the Cup setup.
+
 ## Server Hardware
 
 - **CPU**: Intel N150
