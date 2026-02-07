@@ -20,6 +20,23 @@ services:
     ports:
       - 8000:8000
 
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    environment:
+      - PGID=${PGID}
+      - PUID=${PUID}
+      - TZ=${TZ}
+      - HOMEPAGE_ALLOWED_HOSTS=${HOMEPAGE_ALLOWED_HOSTS}
+    volumes:
+      - ${DOCKER_APPDATA}/homepage:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /mnt/raid1:/mnt/raid1
+      - /mnt/usb:/mnt/usb
+    ports:
+      - 3000:3000
+
 volumes:
   portainer_data:
     name: portainer_data
@@ -27,7 +44,6 @@ volumes:
 networks:
   default:
     name: portainer_network
-
 # Additional network for internal services, initialized manually
 #   homelab:
 #     name: homelab
