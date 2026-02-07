@@ -28,7 +28,7 @@ networks:
   default:
     name: portainer_network
 
-# Additional network for internal services, uncomment if needed
+# Additional network for internal services, initialized manually
 #   homelab:
 #     name: homelab
 #     driver: bridge

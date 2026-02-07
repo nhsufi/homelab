@@ -6,9 +6,8 @@ This repository contains the Docker configurations and setup for my personal hom
 
 - `portainer-compose.yaml` - Portainer container management setup
 - `backup/` - Backup services
-- `dns/` - DNS server and ad blocking services
 - `media/` - Media management and streaming services
-- `proxy/` - Reverse proxy and SSL certificate management
+- `network/` - Reverse proxy, DNS/ad blocking, and dynamic DNS services
 
 ## [Portainer](https://github.com/portainer/portainer)
 
