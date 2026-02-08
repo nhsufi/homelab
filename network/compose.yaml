@@ -3,6 +3,9 @@ services:
     image: jc21/nginx-proxy-manager:latest
     container_name: nginx
     restart: unless-stopped
+    labels:
+      - homepage.group=Network
+      - homepage.name=nginx
     environment:
       - TZ=${TZ}
     volumes:
@@ -20,6 +23,9 @@ services:
     image: adguard/adguardhome
     container_name: adguardhome
     restart: unless-stopped
+    labels:
+      - homepage.group=Network
+      - homepage.name=adguardhome
     environment:
       - TZ=${TZ}
     volumes:
@@ -36,6 +42,9 @@ services:
     image: lscr.io/linuxserver/duckdns:latest
     container_name: duckdns
     restart: unless-stopped
+    labels:
+      - homepage.group=Network
+      - homepage.name=duckdns
     environment:
       - PGID=${PGID}
       - PUID=${PUID}
