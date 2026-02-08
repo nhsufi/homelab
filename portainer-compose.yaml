@@ -3,6 +3,9 @@ services:
     container_name: portainer
     image: portainer/portainer-ce:lts
     restart: always
+    labels:
+      - homepage.group=Homelab
+      - homepage.name=portainer
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
@@ -14,6 +17,9 @@ services:
     container_name: cup
     image: ghcr.io/sergi0g/cup:latest
     restart: always
+    labels:
+      - homepage.group=Homelab
+      - homepage.name=cup
     command: serve
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
