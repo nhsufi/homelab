@@ -196,25 +196,6 @@ services:
     ports:
       - 6767:6767
 
-  homarr:
-    image: ghcr.io/homarr-labs/homarr:latest
-    container_name: homarr
-    restart: unless-stopped
-    labels:
-      - homepage.group=Media
-      - homepage.name=homarr
-    environment:
-      - SECRET_ENCRYPTION_KEY=${ENCRYPTION_KEY}
-      - TZ=${TZ}
-    volumes:
-      - ${DOCKER_APPDATA}/homarr:/appdata
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - homelab
-      - portainer_network
-    ports:
-      - 7575:7575
-
   seerr:
     image: ghcr.io/seerr-team/seerr:develop
     container_name: seerr

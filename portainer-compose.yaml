@@ -30,6 +30,9 @@ services:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: homepage
     restart: unless-stopped
+    labels:
+      - homepage.group=Homelab
+      - homepage.name=homepage
     environment:
       - TZ=${TZ}
       - HOMEPAGE_ALLOWED_HOSTS=${HOMEPAGE_ALLOWED_HOSTS}
@@ -48,6 +51,7 @@ volumes:
 networks:
   default:
     name: portainer_network
+
 # Additional network for internal services, initialized manually
 #   homelab:
 #     name: homelab

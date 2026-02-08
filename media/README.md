@@ -24,8 +24,6 @@ Provides a fully automated media server solution for downloading and managing pu
 
 [**Bazarr**](https://github.com/linuxserver/docker-bazarr) - Automated subtitle downloading for movies and TV shows.
 
-[**Homarr**](https://github.com/homarr-labs/homarr) - Web dashboard for quick access to all services.
-
 [**Seerr**](https://github.com/seerr-team/seerr) - Media request manager that integrates with Radarr and Sonarr for user requests.
 
 [**Plex**](https://github.com/linuxserver/docker-plex) - Media server that streams movies and TV shows to any device. Supports hardware transcoding. (See `plex/compose.yaml`)
