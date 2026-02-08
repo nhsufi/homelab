@@ -3,6 +3,9 @@ services:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex
     restart: unless-stopped
+    labels:
+      - homepage.group=Media
+      - homepage.name=plex
     environment:
       - VERSION=docker
       - PUID=${PUID}

@@ -3,6 +3,9 @@ services:
     image: lscr.io/linuxserver/duplicati:latest
     container_name: duplicati
     restart: unless-stopped
+    labels:
+      - homepage.group=Backup
+      - homepage.name=duplicati
     environment:
       - PGID=${PGID}
       - PUID=${PUID}
