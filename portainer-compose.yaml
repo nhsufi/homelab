@@ -43,7 +43,7 @@ services:
       - homepage.group=Homelab
       - homepage.name=homepage
       - homepage.href=https://homepage.${PERSONAL_DOMAIN}
-      - homepage.icon=homepage.svg
+      - homepage.icon=homepage.png
     environment:
       - TZ=${TZ}
       - HOMEPAGE_ALLOWED_HOSTS=${HOMEPAGE_ALLOWED_HOSTS}
