@@ -6,7 +6,7 @@ services:
     labels:
       - homepage.group=Network
       - homepage.name=nginx
-      - homepage.href=https://nginx${PERSONAL_DOMAIN}
+      - homepage.href=https://nginx.${PERSONAL_DOMAIN}
       - homepage.icon=nginx-proxy-manager.svg
     environment:
       - TZ=${TZ}
