@@ -6,6 +6,8 @@ services:
     labels:
       - homepage.group=Homelab
       - homepage.name=portainer
+      - homepage.href=https://portainer.${PERSONAL_DOMAIN}
+      - homepage.icon=portainer.svg
     environment:
       - TZ=${TZ}
     volumes:
@@ -22,6 +24,8 @@ services:
     labels:
       - homepage.group=Homelab
       - homepage.name=cup
+      - homepage.href=https://cup.${PERSONAL_DOMAIN}
+      - homepage.icon=cup.svg
     environment:
       - TZ=${TZ}
     command: serve
@@ -38,6 +42,8 @@ services:
     labels:
       - homepage.group=Homelab
       - homepage.name=homepage
+      - homepage.href=https://homepage.${PERSONAL_DOMAIN}
+      - homepage.icon=homepage.svg
     environment:
       - TZ=${TZ}
       - HOMEPAGE_ALLOWED_HOSTS=${HOMEPAGE_ALLOWED_HOSTS}
