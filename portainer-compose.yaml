@@ -6,6 +6,8 @@ services:
     labels:
       - homepage.group=Homelab
       - homepage.name=portainer
+    environment:
+      - TZ=${TZ}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
@@ -20,8 +22,11 @@ services:
     labels:
       - homepage.group=Homelab
       - homepage.name=cup
+    environment:
+      - TZ=${TZ}
     command: serve
     volumes:
+      - ${DOCKER_APPDATA}/cup/cup.json:/config/cup.json
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 8000:8000
@@ -51,7 +56,6 @@ volumes:
 networks:
   default:
     name: portainer_network
-
 # Additional network for internal services, initialized manually
 #   homelab:
 #     name: homelab
