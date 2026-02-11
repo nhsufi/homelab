@@ -33,6 +33,8 @@ services:
       # Do not edit the next line. If you want to change the media storage location on your system, edit the value of UPLOAD_LOCATION in the .env file
       - ${UPLOAD_LOCATION}:/data
       - /etc/localtime:/etc/localtime:ro
+    networks:
+      - homelab
     # stack.env required for Portainer compatibility
     env_file:
       - stack.env
@@ -55,6 +57,8 @@ services:
     #   service: cpu # set to one of [armnn, cuda, rocm, openvino, openvino-wsl, rknn] for accelerated inference - use the `-wsl` version for WSL2 where applicable
     volumes:
       - model-cache:/cache
+    networks:
+      - homelab
     # stack.env required for Portainer compatibility
     env_file:
       - stack.env
@@ -82,6 +86,8 @@ services:
     volumes:
       # Do not edit the next line. If you want to change the database storage location on your system, edit the value of DB_DATA_LOCATION in the .env file
       - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
+    networks:
+      - homelab
     shm_size: 128mb
     restart: always
     healthcheck:
