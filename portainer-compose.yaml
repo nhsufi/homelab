@@ -22,6 +22,8 @@ services:
     volumes:
       - ${DOCKER_APPDATA}/cup/cup.json:/config/cup.json
       - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - homelab
     ports:
       - 8000:8000
 
@@ -39,7 +41,6 @@ services:
       - /mnt/usb:/mnt/usb
     networks:
       - homelab
-      - portainer_network
     ports:
       - 3000:3000
 
@@ -52,7 +53,6 @@ networks:
     name: portainer_network
   homelab:
     external: true
-
 # Additional network for internal services, initialized manually
 #   homelab:
 #     name: homelab
