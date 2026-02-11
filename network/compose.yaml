@@ -25,7 +25,8 @@ services:
     volumes:
       - ${DOCKER_APPDATA}/adguardhome/conf:/opt/adguardhome/conf
       - ${DOCKER_APPDATA}/adguardhome/work:/opt/adguardhome/work
-    network_mode: host
+    networks:
+      - homelab
     ports:
       - 53:53/tcp
       - 53:53/udp
