@@ -37,6 +37,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /mnt/raid1:/mnt/raid1
       - /mnt/usb:/mnt/usb
+    networks:
+      - homelab
     ports:
       - 3000:3000
 
