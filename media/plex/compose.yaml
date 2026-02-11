@@ -3,11 +3,6 @@ services:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex
     restart: unless-stopped
-    labels:
-      - homepage.group=Media
-      - homepage.name=plex
-      - homepage.href=https://plex.${PERSONAL_DOMAIN}
-      - homepage.icon=plex.svg
     environment:
       - VERSION=docker
       - PUID=${PUID}

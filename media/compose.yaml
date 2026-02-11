@@ -3,9 +3,6 @@ services:
     image: qmcgaw/gluetun:latest
     container_name: gluetun
     restart: always
-    labels:
-      - homepage.group=Media
-      - homepage.name=gluetun
     cap_add:
       - NET_ADMIN
     devices:
@@ -30,9 +27,6 @@ services:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
     restart: unless-stopped
-    labels:
-      - homepage.group=Media
-      - homepage.name=qbittorrent
     environment:
       - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
       - PGID=${PGID}
@@ -53,9 +47,6 @@ services:
     image: lscr.io/linuxserver/sabnzbd:latest
     container_name: sabnzbd
     restart: unless-stopped
-    labels:
-      - homepage.group=Media
-      - homepage.name=sabnzbd
     environment:
       - PGID=${PGID}
       - PUID=${PUID}
@@ -72,9 +63,6 @@ services:
     image: ghcr.io/flaresolverr/flaresolverr:latest
     container_name: flaresolverr
     restart: unless-stopped
-    labels:
-      - homepage.group=Media
-      - homepage.name=flaresolverr
     environment:
       - LOG_LEVEL=info
       - TZ=${TZ}
@@ -89,9 +77,6 @@ services:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
     restart: unless-stopped
-    labels:
-      - homepage.group=Media
-      - homepage.name=prowlarr
     environment:
       - PGID=${PGID}
       - PUID=${PUID}
@@ -107,9 +92,6 @@ services:
     image: huntarr/huntarr:latest
     container_name: huntarr
     restart: unless-stopped
-    labels:
-      - homepage.group=Media
-      - homepage.name=huntarr
     environment:
       - PGID=${PGID}
       - PUID=${PUID}
@@ -125,9 +107,6 @@ services:
     image: santiagosayshey/profilarr:latest
     container_name: profilarr
     restart: unless-stopped
-    labels:
-      - homepage.group=Media
-      - homepage.name=profilarr
     environment:
       - PGID=${PGID}
       - PUID=${PUID}
@@ -143,9 +122,6 @@ services:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
     restart: unless-stopped
-    labels:
-      - homepage.group=Media
-      - homepage.name=radarr
     environment:
       - PGID=${PGID}
       - PUID=${PUID}
@@ -162,9 +138,6 @@ services:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
     restart: unless-stopped
-    labels:
-      - homepage.group=Media
-      - homepage.name=sonarr
     environment:
       - PGID=${PGID}
       - PUID=${PUID}
@@ -181,9 +154,6 @@ services:
     image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
     restart: unless-stopped
-    labels:
-      - homepage.group=Media
-      - homepage.name=bazarr
     environment:
       - PGID=${PGID}
       - PUID=${PUID}
@@ -200,9 +170,6 @@ services:
     image: ghcr.io/seerr-team/seerr:develop
     container_name: seerr
     restart: unless-stopped
-    labels:
-      - homepage.group=Media
-      - homepage.name=seerr
     environment:
       - LOG_LEVEL=debug
       - PGID=${PGID}

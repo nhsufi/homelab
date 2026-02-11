@@ -3,11 +3,6 @@ services:
     image: jc21/nginx-proxy-manager:latest
     container_name: nginx
     restart: unless-stopped
-    labels:
-      - homepage.group=Network
-      - homepage.name=nginx
-      - homepage.href=https://nginx.${PERSONAL_DOMAIN}
-      - homepage.icon=nginx-proxy-manager.svg
     environment:
       - TZ=${TZ}
     volumes:
@@ -25,11 +20,6 @@ services:
     image: adguard/adguardhome
     container_name: adguardhome
     restart: unless-stopped
-    labels:
-      - homepage.group=Network
-      - homepage.name=adguardhome
-      - homepage.href=http://192.168.0.108:8181
-      - homepage.icon=adguard-home.svg
     environment:
       - TZ=${TZ}
     volumes:
@@ -45,11 +35,6 @@ services:
   duckdns:
     image: lscr.io/linuxserver/duckdns:latest
     container_name: duckdns
-    restart: unless-stopped
-    labels:
-      - homepage.group=Network
-      - homepage.name=duckdns
-      - homepage.icon=duckdns.svg
     environment:
       - PGID=${PGID}
       - PUID=${PUID}
