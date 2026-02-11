@@ -39,6 +39,7 @@ services:
       - /mnt/usb:/mnt/usb
     networks:
       - homelab
+      - portainer_network
     ports:
       - 3000:3000
 
