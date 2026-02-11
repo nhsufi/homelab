@@ -49,6 +49,9 @@ volumes:
 networks:
   default:
     name: portainer_network
+  homelab:
+    external: true
+
 # Additional network for internal services, initialized manually
 #   homelab:
 #     name: homelab
