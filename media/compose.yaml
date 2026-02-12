@@ -199,5 +199,3 @@ services:
 networks:
   homelab:
     external: true
-  portainer_network:
-    external: true

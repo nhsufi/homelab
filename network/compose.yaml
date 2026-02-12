@@ -10,7 +10,6 @@ services:
       - ${DOCKER_APPDATA}/nginx/letsencrypt:/etc/letsencrypt
     networks:
       - homelab
-      - portainer_network
     ports:
       - 80:80 # HTTP
       - 443:443 # HTTPS
@@ -48,6 +47,4 @@ services:
 
 networks:
   homelab:
-    external: true
-  portainer_network:
     external: true
