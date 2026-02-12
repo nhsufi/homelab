@@ -182,6 +182,20 @@ services:
     ports:
       - 5055:5055
 
+  maintainerr:
+    image: maintainerr/maintainerr:latest
+    container_name: maintainerr
+    restart: unless-stopped
+    user: 1000:1000
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT}/data:/opt/data
+    networks:
+      - homelab
+    ports:
+      - 6246:6246
+
 networks:
   homelab:
     external: true

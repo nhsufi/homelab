@@ -26,4 +26,6 @@ Provides a fully automated media server solution for downloading and managing pu
 
 [**Seerr**](https://github.com/seerr-team/seerr) - Media request manager that integrates with Radarr and Sonarr for user requests.
 
+[**Maintainerr**](https://github.com/maintainerr/maintainerr) - TBD
+
 [**Plex**](https://github.com/linuxserver/docker-plex) - Media server that streams movies and TV shows to any device. Supports hardware transcoding. (See `plex/compose.yaml`)
