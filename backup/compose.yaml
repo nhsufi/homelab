@@ -30,8 +30,13 @@ services:
       - /etc/localtime:/etc/localtime:ro
     networks:
       - homelab
-    env_file:
-      - .env
+    environment:
+      - UPLOAD_LOCATION=${UPLOAD_LOCATION}
+      - DB_DATA_LOCATION=${DB_DATA_LOCATION}
+      - IMMICH_VERSION=${IMMICH_VERSION}
+      - DB_PASSWORD=${DB_PASSWORD} 
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_DATABASE_NAME=${DB_DATABASE_NAME}
     ports:
       - 2283:2283
     depends_on:
@@ -53,9 +58,13 @@ services:
       - immich-model-cache:/cache
     networks:
       - homelab
-    # .env required for Portainer compatibility
-    env_file:
-      - .env
+    environment:
+      - UPLOAD_LOCATION=${UPLOAD_LOCATION}
+      - DB_DATA_LOCATION=${DB_DATA_LOCATION}
+      - IMMICH_VERSION=${IMMICH_VERSION}
+      - DB_PASSWORD=${DB_PASSWORD} 
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_DATABASE_NAME=${DB_DATABASE_NAME}
     restart: always
     healthcheck:
       disable: false
