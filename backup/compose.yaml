@@ -9,7 +9,6 @@ services:
       - TZ=${TZ}
       - SETTINGS_ENCRYPTION_KEY=${DUPLICATI_ENCRYPTION_KEY}
     volumes:
-      - /mnt/usb:/backups
       - ${DOCKER_APPDATA}:/source
       - ${DOCKER_APPDATA}/duplicati:/config
     ports:
@@ -30,6 +29,7 @@ services:
       - ${UPLOAD_LOCATION}:/data
       - /etc/localtime:/etc/localtime:ro
     environment:
+      - TZ=${TZ}
       - UPLOAD_LOCATION=${UPLOAD_LOCATION}
       - DB_DATA_LOCATION=${DB_DATA_LOCATION}
       - IMMICH_VERSION=${IMMICH_VERSION}
