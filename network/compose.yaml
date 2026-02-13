@@ -40,9 +40,10 @@ services:
     cap_drop: [all]
     security_opt: [no-new-privileges:true]
     environment:
+      - PROXIED=true
       - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN}
       - DOMAINS=${MY_DOMAINS}
-      - PROXIED=true
+      - IP6_PROVIDER=none
     network_mode: host
 
 networks:
