@@ -45,6 +45,20 @@ services:
       - ${DOCKER_APPDATA}/duckdns:/config
     network_mode: host
 
+  cloudflare-ddns:
+    image: favonia/cloudflare-ddns:latest
+    container_name: cloudflare-ddns
+    restart: always
+    user: 1000:1000
+    read_only: true
+    cap_drop: [all]
+    security_opt: [no-new-privileges:true]
+    environment:
+      - CLOUDFLARE_API_TOKEN=${CLOUDFLARE-API-TOKEN}
+      - DOMAINS=${MY_DOMAINS}
+      - PROXIED=true
+    network_mode: host
+
 networks:
   homelab:
     external: true
