@@ -36,7 +36,6 @@ services:
       - ${DOCKER_APPDATA}/homepage:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /mnt/raid1:/mnt/raid1
-      - /mnt/usb:/mnt/usb
     ports:
       - 3000:3000
 
